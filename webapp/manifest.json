@@ -1,0 +1,141 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "app.splitappb12",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.16.3",
+      "toolsId": "07769c98-5ed5-4794-b565-b1090e23d603"
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "toolsapp-display": {
+          "semanticObject": "toolsapp",
+          "action": "display",
+          "title": "{{flpTitle}}",
+          "subTitle": "{{flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.132.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "app.splitappb12.i18n.i18n"
+        }
+      },
+      "toolModel":{
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "/model/mockData/toolsData.json"
+      }
+
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "app.splitappb12.view",
+        "async": true,
+        "viewPath": "app.splitappb12.view"
+      },
+      "routes": [
+        {
+          "name": "RouteListItemsView",
+          "pattern": "",
+          "target": [
+            "TargetListItemsView","TargetEmptyView"
+          ]
+        },
+        {
+          "name": "RouteDetail",
+          "pattern": "detail/{ind}",
+          "target": [
+            "TargetListItemsView","TargetDetailView"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetListItemsView": {
+          "id": "ListItemsView",
+          "name": "ListItemsView",
+          "controlAggregation": "masterPages",
+          "level": 1
+        },
+        "TargetEmptyView": {
+          "id": "idEmpty",
+          "name": "EmptyView",
+          "controlAggregation": "detailPages",
+          "level": 1
+        },
+        "TargetDetailView": {
+          "id": "idDetail",
+          "name": "DetailView",
+          "controlAggregation": "detailPages",
+          "level": 2
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "app.splitappb12.view.App",
+      "type": "XML",
+      "id": "App"
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "appsplitappb12"
+  }
+}

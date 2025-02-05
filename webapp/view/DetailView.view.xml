@@ -1,0 +1,66 @@
+<mvc:View controllerName="app.splitappb12.controller.DetailView"
+     xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f= "sap.ui.layout.form">
+    <Page id="idDet" title="{i18n>detail}"  showNavButton="true" navButtonPress="onPressToView">
+
+        	<content>
+			<!--<Button text="{/supplierTab/0/name}"></Button>       just to check-->
+			<!-- TO BIND DETAILS FROM LIST WHEN WE CLICK -->
+			<ObjectHeader icon="{toolModel>icon}" intro="{toolModel>id}" number="{toolModel>price}" numberUnit="{toolModel>currency}"
+				title="{toolModel>name}"></ObjectHeader>
+		</content>
+		<IconTabBar>
+			<items>
+				<IconTabFilter icon="sap-icon://information">
+					<content>
+						<f:SimpleForm>
+							<Label text="ID"></Label>
+							<Text text="{toolModel>id}"></Text>
+							<Label text="Name"></Label>
+							<Text text="{toolModel>name}"></Text>
+							<Label text="Description"></Label>
+							<Text text="{toolModel>description}"></Text>
+						</f:SimpleForm>
+					</content>
+				</IconTabFilter>
+				<IconTabFilter icon="sap-icon://supplier">
+					<content>
+						
+						<!--mtable-->
+						<Table items="{/supplierTab}">
+							<columns>
+								<Column>
+									<Text text="id"></Text>
+								</Column>
+								<Column>
+										<Text text="name"></Text>
+								</Column>
+								<Column>
+										<Text text="Contact Person"></Text>
+								</Column>
+								<Column>
+										<Text text="email"></Text>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{id}"></Text>
+										<Text  text="{name}"></Text>
+																		<!--icon for dialog-->
+										<Input value="{contact_person}" showValueHelp="true" valueHelpRequest="f4Help"></Input>
+										<Text  text="{email}"></Text>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+
+
+    </Page>
+</mvc:View>
